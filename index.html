@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MilteHain — Real Connections</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#faf7f4;
+  color:#29201f;
+}
+
+header{
+  background:#fff;
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #eee3df;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.logo{
+  font-size:27px;
+  font-weight:800;
+  letter-spacing:-1px;
+  color:#7b3447;
+}
+
+.login-btn{
+  border:1px solid #7b3447;
+  background:white;
+  color:#7b3447;
+  padding:10px 17px;
+  border-radius:22px;
+  font-weight:600;
+}
+
+.hero{
+  padding:55px 20px 45px;
+  text-align:center;
+  background:linear-gradient(135deg,#fff8f5,#f6e8e8);
+}
+
+.hero h1{
+  font-size:40px;
+  line-height:1.1;
+  margin-bottom:16px;
+}
+
+.hero h1 span{
+  color:#8a3b52;
+}
+
+.hero p{
+  max-width:520px;
+  margin:auto;
+  color:#6e6260;
+  font-size:17px;
+  line-height:1.6;
+}
+
+.main-btn{
+  margin-top:25px;
+  background:#7b3447;
+  color:white;
+  border:0;
+  padding:14px 27px;
+  border-radius:28px;
+  font-size:16px;
+  font-weight:700;
+}
+
+.section{
+  padding:40px 20px;
+  max-width:1050px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  font-size:28px;
+  margin-bottom:25px;
+}
+
+.profiles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.profile{
+  background:white;
+  border:1px solid #eee2df;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 5px 20px rgba(80,40,40,.06);
+}
+
+.profile-photo{
+  height:220px;
+  background:linear-gradient(135deg,#ead4d6,#d9c1c5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+  color:#7b3447;
+}
+
+.profile-info{
+  padding:17px;
+}
+
+.profile-info h3{
+  margin-bottom:7px;
+}
+
+.profile-info p{
+  color:#766b69;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.like-btn{
+  width:100%;
+  padding:11px;
+  border:1px solid #7b3447;
+  background:white;
+  color:#7b3447;
+  border-radius:22px;
+  font-weight:700;
+}
+
+.premium{
+  background:#302326;
+  color:white;
+  padding:45px 20px;
+}
+
+.premium-box{
+  max-width:900px;
+  margin:auto;
+}
+
+.premium h2{
+  text-align:center;
+  font-size:31px;
+  margin-bottom:10px;
+}
+
+.premium-sub{
+  text-align:center;
+  color:#d9cacc;
+  margin-bottom:30px;
+}
+
+.plans{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.plan{
+  background:#fff;
+  color:#29201f;
+  border-radius:20px;
+  padding:25px;
+  position:relative;
+}
+
+.plan.best{
+  border:3px solid #c99869;
+}
+
+.badge{
+  position:absolute;
+  top:-14px;
+  right:18px;
+  background:#c99869;
+  color:white;
+  padding:6px 13px;
+  border-radius:15px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.plan h3{
+  font-size:20px;
+  margin-bottom:14px;
+}
+
+.old-price{
+  text-decoration:line-through;
+  color:#999;
+  font-size:18px;
+  margin-right:7px;
+}
+
+.new-price{
+  font-size:30px;
+  font-weight:800;
+  color:#7b3447;
+}
+
+.discount{
+  display:inline-block;
+  margin-left:8px;
+  background:#e7f4e9;
+  color:#24713a;
+  padding:5px 8px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.features{
+  margin:18px 0;
+  list-style:none;
+}
+
+.features li{
+  margin:10px 0;
+  font-size:14px;
+}
+
+.subscribe{
+  width:100%;
+  background:#7b3447;
+  color:white;
+  border:0;
+  padding:13px;
+  border-radius:24px;
+  font-weight:700;
+  font-size:15px;
+}
+
+.info{
+  background:white;
+  padding:40px 20px;
+}
+
+.info-grid{
+  max-width:900px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.info-card{
+  text-align:center;
+  padding:20px;
+}
+
+.info-card .icon{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.info-card p{
+  color:#756a68;
+  font-size:14px;
+  line-height:1.5;
+}
+
+footer{
+  background:#21191b;
+  color:#cfc4c5;
+  text-align:center;
+  padding:25px 15px;
+  font-size:13px;
+}
+
+.popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:100;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.popup-box{
+  background:white;
+  color:#29201f;
+  max-width:420px;
+  width:100%;
+  border-radius:22px;
+  padding:28px;
+  text-align:center;
+}
+
+.popup-box h2{
+  color:#7b3447;
+  margin-bottom:10px;
+}
+
+.popup-box p{
+  color:#706665;
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.close{
+  margin-top:10px;
+  background:none;
+  border:0;
+  color:#777;
+}
+
+@media(max-width:650px){
+  .hero h1{
+    font-size:34px;
+  }
+
+  .plans{
+    grid-template-columns:1fr;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .profiles{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .profile-photo{
+    height:170px;
+  }
+}
+
+@media(max-width:420px){
+  .profiles{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">MilteHain</div>
+  <button class="login-btn" onclick="showPopup()">Login</button>
+</header>
+
+<section class="hero">
+  <h1>Meet people.<br><span>Make connections.</span></h1>
+  <p>
+    MilteHain is a simple place to discover new people,
+    connect with others and build genuine friendships.
+  </p>
+  <button class="main-btn" onclick="showPopup()">Join MilteHain</button>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Discover People</h2>
+
+  <div class="profiles">
+
+    <div class="profile">
+      <div class="profile-photo">👩</div>
+      <div class="profile-info">
+        <h3>Profile 01</h3>
+        <p>Delhi • Online</p>
+        <button class="like-btn" onclick="likeProfile()">♡ Like</button>
+      </div>
+    </div>
+
+    <div class="profile">
+      <div class="profile-photo">👩</div>
+      <div class="profile-info">
+        <h3>Profile 02</h3>
+        <p>Mumbai • Online</p>
+        <button class="like-btn" onclick="likeProfile()">♡ Like</button>
+      </div>
+    </div>
+
+    <div class="profile">
+      <div class="profile-photo">👩</div>
+      <div class="profile-info">
+        <h3>Profile 03</h3>
+        <p>Bengaluru • Online</p>
+        <button class="like-btn" onclick="likeProfile()">♡ Like</button>
+      </div>
+    </div>
+
+    <div class="profile">
+      <div class="profile-photo">👩</div>
+      <div class="profile-info">
+        <h3>Profile 04</h3>
+        <p>Pune • Online</p>
+        <button class="like-btn" onclick="likeProfile()">♡ Like</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="premium">
+  <div class="premium-box">
+
+    <h2>Unlock Premium</h2>
+
+    <p class="premium-sub">
+      Connect with more people and unlock your full experience.
+    </p>
+
+    <div class="plans">
+
+      <div class="plan">
+        <h3>Premium — 1 Month</h3>
+
+        <div>
+          <span class="old-price">₹449</span>
+          <span class="new-price">₹389</span>
+          <span class="discount">13% OFF</span>
+        </div>
+
+        <ul class="features">
+          <li>✓ Like profiles</li>
+          <li>✓ Chat access</li>
+          <li>✓ View profile photos</li>
+          <li>✓ View stories</li>
+          <li>✓ View profile location</li>
+        </ul>
+
+        <button class="subscribe" onclick="showPopup()">
+          Get Premium
+        </button>
+      </div>
+
+      <div class="plan best">
+
+        <div class="badge">BEST VALUE</div>
+
+        <h3>Premium — 3 Months</h3>
+
+        <div>
+          <span class="old-price">₹1,347</span>
+          <span class="new-price">₹989</span>
+          <span class="discount">27% OFF</span>
+        </div>
+
+        <ul class="features">
+          <li>✓ Like profiles</li>
+          <li>✓ Chat access</li>
+          <li>✓ View profile photos</li>
+          <li>✓ View stories</li>
+          <li>✓ View profile location</li>
+        </ul>
+
+        <button class="subscribe" onclick="showPopup()">
+          Get Premium
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="info">
+
+  <div class="info-grid">
+
+    <div class="info-card">
+      <div class="icon">🤝</div>
+      <h3>Real Connections</h3>
+      <p>Discover people and create meaningful friendships.</p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">🔒</div>
+      <h3>Privacy First</h3>
+      <p>Your profile and personal information are handled with care.</p>
+    </div>
+
+    <div class="info-card">
+      <div class="icon">✨</div>
+      <h3>Simple Experience</h3>
+      <p>A clean and easy way to discover and connect.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 MilteHain.in • Friendship & Connections
+</footer>
+
+<div class="popup" id="popup">
+
+  <div class="popup-box">
+
+    <h2>MilteHain Premium</h2>
+
+    <p>
+      Premium access is required to continue.
+      Choose a Premium plan to unlock likes and chat.
+    </p>
+
+    <button class="subscribe" onclick="closePopup()">
+      Continue
+    </button>
+
+    <button class="close" onclick="closePopup()">
+      Close
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+let freeLikes = 0;
+
+function likeProfile(){
+
+  freeLikes++;
+
+  if(freeLikes > 5){
+    showPopup();
+    freeLikes = 5;
+    return;
+  }
+
+  alert("Like sent! Free likes used: " + freeLikes + "/5");
+}
+
+function showPopup(){
+  document.getElementById("popup").style.display="flex";
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+
+</script>
+
+</body>
+          </html>
