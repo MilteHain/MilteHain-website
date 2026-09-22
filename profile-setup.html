@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MilteHain — Profile Setup</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif}
+body{
+background:
+radial-gradient(circle at 8% 10%,rgba(255,145,177,.15),transparent 18%),
+radial-gradient(circle at 92% 88%,rgba(255,185,79,.13),transparent 20%),
+linear-gradient(135deg,#fdfcff 0%,#f7f7ff 55%,#fffaf7 100%);
+color:#17234b;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.page{min-height:100vh;padding:22px 16px;display:flex;justify-content:center}
+.card{
+width:min(100%,720px);background:rgba(255,255,255,.96);
+border:1px solid #dfe7f3;border-radius:18px;
+box-shadow:0 10px 35px rgba(35,56,100,.12);
+padding:25px 38px 30px;position:relative;overflow:hidden;
+}
+.heart{position:absolute;font-size:48px;color:#f9b7c9;opacity:.18;line-height:1;pointer-events:none}
+.h1{top:25px;left:16px}.h2{top:22px;right:18px;font-size:43px}
+.h3{bottom:20px;left:15px;font-size:40px}.h4{bottom:18px;right:18px;font-size:32px;color:#efb84f}
+.brand{text-align:center;position:relative;z-index:2}
+.logo{width:155px;height:auto;display:block;margin:0 auto 8px}
+.heading{font:700 27px Georgia,"Times New Roman",serif;color:#17245a;margin:0 0 5px}
+.subheading{font-size:13px;color:#6d7b99;margin:0 0 20px}
+.progress{height:7px;background:#edf0f7;border-radius:10px;overflow:hidden;margin:0 0 22px}
+.progress span{display:block;width:100%;height:100%;background:linear-gradient(100deg,#4f16e8,#c51cff);border-radius:10px}
+.section{position:relative;z-index:2;margin-top:18px}
+.section-title{font-size:14px;font-weight:700;color:#27375e;margin:0 0 9px}
+.hint{font-size:11px;color:#7a87a1;margin:-3px 0 9px}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.photo-box{
+height:130px;border:1.5px dashed #cfd9e8;border-radius:11px;
+background:#fbfcff;display:flex;align-items:center;justify-content:center;
+overflow:hidden;position:relative;
+}
+.photo-box img{width:100%;height:100%;object-fit:cover;display:none}
+.photo-box .placeholder{text-align:center;color:#71809e;font-size:11px;line-height:1.4;padding:10px}
+.photo-box .plus{font-size:25px;color:#5b20e8;display:block;margin-bottom:4px}
+.photo-box.filled img{display:block}
+.photo-box.filled .placeholder{display:none}
+.photo-box input{display:none}
+.verify-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;padding:10px 12px;border:1px solid #e0e6f0;border-radius:9px;background:#fff}
+.verify-text{font-size:11px;color:#596b8d;line-height:1.4}
+.verify-text strong{display:block;color:#33446b;margin-bottom:2px}
+.verify-btn{
+border:1px solid #8d70ec;background:#fff;color:#5b20e8;
+border-radius:8px;padding:8px 12px;font-size:11px;font-weight:700;white-space:nowrap;
+}
+.field{position:relative;margin-bottom:11px}
+.field label,.section-label{display:block;font-size:12px;font-weight:700;color:#33446b;margin:0 0 7px}
+.input,.textarea,.select{
+width:100%;border:1px solid #dce4ef;border-radius:9px;background:#fff;
+outline:none;color:#17234b;padding:12px 13px;
+}
+.input,.select{height:48px}
+.textarea{min-height:105px;resize:vertical;line-height:1.45}
+.input:focus,.textarea:focus,.select:focus{border-color:#7040ee;box-shadow:0 0 0 3px rgba(112,64,238,.08)}
+.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.choice{
+height:47px;border:1px solid #dce4ef;border-radius:9px;
+display:flex;align-items:center;justify-content:center;
+color:#33446b;font-weight:700;background:#fff;position:relative;
+}
+.choice input{display:none}
+.choice:has(input:checked){border-color:#9d7cff;box-shadow:0 0 0 2px rgba(124,65,242,.08);color:#5b20e8}
+.preference-note{font-size:10px;color:#7a87a1;margin-top:7px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.save-btn{
+width:100%;height:53px;border:0;border-radius:10px;
+background:linear-gradient(100deg,#4e16e8,#7d2cf7);
+color:#fff;font-weight:700;font-size:16px;
+box-shadow:0 7px 18px rgba(82,25,222,.22);margin-top:22px;
+}
+.skip{text-align:center;font-size:11px;color:#687794;margin:12px 0 0}
+.status{font-size:11px;color:#5b20e8;text-align:center;margin-top:9px;min-height:14px}
+@media(max-width:620px){
+.card{padding:22px 20px 25px;border-radius:0;min-height:100vh;border-left:0;border-right:0}
+.page{padding:0}
+.heading{font-size:25px}
+.photos{gap:7px}
+.photo-box{height:105px}
+.row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<section class="card">
+<div class="heart h1">♥</div><div class="heart h2">♥</div><div class="heart h3">♥</div><div class="heart h4">♥</div>
+
+<div class="brand">
+<img class="logo" src="data:image/png;base64,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" alt="MilteHain logo">
+<h1 class="heading">Complete Your Profile</h1>
+<p class="subheading">Tell people a little more about you</p>
+</div>
+
+<div class="progress"><span></span></div>
+
+<div class="section">
+<div class="section-title">Add Photos</div>
+<div class="hint">Add up to 3 photos. A clear photo helps people know who they are connecting with.</div>
+<div class="photos">
+<label class="photo-box" id="box1"><input type="file" accept="image/*" onchange="previewPhoto(this,1)"><div class="placeholder"><span class="plus">＋</span>Add Photo</div><img alt="Photo 1"></label>
+<label class="photo-box" id="box2"><input type="file" accept="image/*" onchange="previewPhoto(this,2)"><div class="placeholder"><span class="plus">＋</span>Add Photo</div><img alt="Photo 2"></label>
+<label class="photo-box" id="box3"><input type="file" accept="image/*" onchange="previewPhoto(this,3)"><div class="placeholder"><span class="plus">＋</span>Add Photo</div><img alt="Photo 3"></label>
+</div>
+
+<div class="verify-row">
+<div class="verify-text"><strong>Photo Verification</strong>Request verification after adding your photos. A verified profile can display a Verified badge after approval.</div>
+<button class="verify-btn" type="button" onclick="requestVerification()">Request Verification</button>
+</div>
+</div>
+
+<div class="section">
+<label class="section-label" for="city">City / Location</label>
+<input class="input" id="city" type="text" placeholder="Enter your city or location">
+</div>
+
+<div class="section">
+<div class="section-label">Who do you want to see?</div>
+<div class="choice-grid">
+<label class="choice"><input type="radio" name="preference" value="Men"><span>Men</span></label>
+<label class="choice"><input type="radio" name="preference" value="Women"><span>Women</span></label>
+</div>
+<div class="preference-note">Choose the profiles you want to see in Discover and matching.</div>
+</div>
+
+<div class="section">
+<label class="section-label" for="about">Tell people about yourself and your interest</label>
+<textarea class="textarea" id="about" placeholder="Write a little about yourself, your interests and what kind of connection you are looking for..."></textarea>
+</div>
+
+<div class="section">
+<label class="section-label" for="hobbies">Hobbies</label>
+<input class="input" id="hobbies" type="text" placeholder="e.g. Travel, Music, Movies, Fitness">
+</div>
+
+<div class="section row">
+<div>
+<label class="section-label" for="smoking">Smoking Preference</label>
+<select class="select" id="smoking">
+<option value="">Select</option>
+<option>Smoker</option>
+<option>Non-smoker</option>
+<option>Occasionally</option>
+</select>
+</div>
+<div>
+<label class="section-label" for="drinking">Drink Preference</label>
+<select class="select" id="drinking">
+<option value="">Select</option>
+<option>Drinker</option>
+<option>Non-drinker</option>
+<option>Occasionally</option>
+</select>
+</div>
+</div>
+
+<button class="save-btn" type="button" onclick="saveProfile()">Save &amp; Continue</button>
+<div class="status" id="status"></div>
+<p class="skip">You can complete or update these details later from Settings.</p>
+</section>
+</div>
+
+<script>
+function previewPhoto(input,num){
+  const box=document.getElementById('box'+num);
+  const img=box.querySelector('img');
+  const file=input.files&&input.files[0];
+  if(!file)return;
+  if(!file.type.startsWith('image/')){alert('Please select an image file.');input.value='';return;}
+  const reader=new FileReader();
+  reader.onload=function(e){img.src=e.target.result;box.classList.add('filled');};
+  reader.readAsDataURL(file);
+}
+function requestVerification(){
+  document.getElementById('status').textContent='Verification request will be connected to the backend after Supabase setup.';
+}
+function saveProfile(){
+  const preference=document.querySelector('input[name="preference"]:checked');
+  const city=document.getElementById('city').value.trim();
+  if(!city){alert('Please enter your City / Location.');document.getElementById('city').focus();return;}
+  if(!preference){alert('Please choose who you want to see: Men or Women.');return;}
+  document.getElementById('status').textContent='Profile setup is ready. Backend connection will be added next.';
+}
+</script>
+</body>
+</html>
