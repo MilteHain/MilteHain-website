@@ -3,31 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MilteHain — Meaningful Connections</title>
-
-<meta name="description"
-content="MilteHain — Meet someone new, make a meaningful connection. 18+ platform.">
+<meta name="theme-color" content="#09051a">
+<title>MilteHain - Meaningful Connections</title>
 
 <style>
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
 }
 
 :root{
-  --navy:#050b2b;
-  --navy2:#09134a;
-  --purple:#6d2cff;
-  --purple2:#9b4dff;
-  --pink:#f22d91;
-  --gold:#f6c85f;
-  --gold2:#ffe5a0;
+  --navy:#09051a;
+  --navy2:#12082a;
+  --purple:#8b3dff;
+  --pink:#f044b7;
+  --gold:#e7b65b;
   --white:#ffffff;
-  --muted:#b9c0dc;
-  --card:rgba(255,255,255,.07);
-  --border:rgba(255,255,255,.13);
+  --muted:#c9bfd8;
 }
 
 html{
@@ -36,714 +29,678 @@ html{
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:
-    radial-gradient(circle at 15% 10%,rgba(112,35,255,.28),transparent 30%),
-    radial-gradient(circle at 85% 30%,rgba(242,45,145,.20),transparent 28%),
-    linear-gradient(135deg,var(--navy),var(--navy2) 55%,#16052d);
-  color:var(--white);
+  background:var(--navy);
+  color:white;
   min-height:100vh;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+button,
+input{
+  font-family:inherit;
 }
 
 button{
-  font-family:inherit;
   cursor:pointer;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
-header{
-  position:sticky;
+.header{
+  position:absolute;
   top:0;
-  z-index:100;
-  background:rgba(4,9,38,.88);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-}
-
-.navbar{
-  max-width:1250px;
-  margin:auto;
-  min-height:76px;
-  padding:10px 22px;
+  left:0;
+  width:100%;
+  z-index:20;
+  padding:22px 6%;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:20px;
+  align-items:center;
 }
 
-.logo-box{
+.logo{
   display:flex;
   align-items:center;
   gap:10px;
-  min-width:190px;
+  text-decoration:none;
+  color:white;
 }
 
-.logo-img{
-  width:52px;
-  height:52px;
-  object-fit:cover;
+.logo-mark{
+  width:48px;
+  height:48px;
+  border:2px solid var(--gold);
   border-radius:50%;
-  border:1px solid rgba(246,200,95,.7);
-  box-shadow:0 0 18px rgba(246,200,95,.18);
+  background:#100827;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  box-shadow:0 0 22px rgba(139,61,255,.28);
 }
 
-.logo-text{
+.logo-mark span{
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:-8px;
+  transform:translateX(-2px);
+  color:#a742ff;
+  text-shadow:
+    5px 0 0 #ed4bb8;
+}
+
+.logo-name{
   font-size:25px;
   font-weight:800;
-  letter-spacing:-1px;
+  letter-spacing:.2px;
 }
 
-.logo-text span{
+.logo-name b{
   color:var(--gold);
 }
 
-.nav-links{
+.nav{
   display:flex;
   align-items:center;
-  gap:27px;
+  gap:12px;
 }
 
-.nav-links a{
-  color:#e6e9f7;
-  font-size:14px;
-  transition:.2s;
-}
-
-.nav-links a:hover{
-  color:var(--gold);
-}
-
-.nav-actions{
-  display:flex;
-  gap:9px;
-}
-
-.btn{
-  border:none;
-  border-radius:25px;
-  padding:12px 22px;
-  font-weight:700;
-  transition:.2s;
-}
-
-.btn:hover{
-  transform:translateY(-1px);
-}
-
-.btn-outline{
+.nav button{
+  border:0;
   background:transparent;
-  color:#fff;
-  border:1px solid rgba(255,255,255,.35);
+  color:white;
+  padding:11px 18px;
+  border-radius:25px;
+  font-size:15px;
 }
 
-.btn-primary{
-  color:#fff;
+.nav .login-btn{
+  border:1px solid rgba(255,255,255,.3);
+}
+
+.nav .register-btn{
   background:linear-gradient(90deg,var(--purple),var(--pink));
-  box-shadow:0 8px 25px rgba(111,44,255,.30);
+  box-shadow:0 8px 25px rgba(139,61,255,.25);
 }
 
-.btn-gold{
-  color:#241500;
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
+/* ================= HOME ================= */
+
+.page{
+  display:none;
 }
 
-/* HERO */
+.page.active{
+  display:block;
+}
 
 .hero{
-  max-width:1250px;
-  margin:auto;
-  padding:70px 22px 55px;
-}
-
-.hero-card{
-  min-height:510px;
-  border-radius:28px;
-  overflow:hidden;
+  min-height:100vh;
   position:relative;
+  overflow:hidden;
   display:flex;
   align-items:center;
+  padding:120px 6% 70px;
   background:
-    linear-gradient(90deg,rgba(3,8,35,.97) 0%,rgba(5,10,43,.88) 45%,rgba(5,10,43,.30) 100%),
-    radial-gradient(circle at 75% 50%,rgba(242,45,145,.35),transparent 30%),
-    linear-gradient(135deg,#080e39,#2b0b53);
-  border:1px solid var(--border);
-  box-shadow:0 25px 70px rgba(0,0,0,.35);
+    radial-gradient(circle at 75% 45%,rgba(240,68,183,.20),transparent 28%),
+    radial-gradient(circle at 45% 25%,rgba(139,61,255,.24),transparent 32%),
+    linear-gradient(135deg,#070313 0%,#120727 50%,#080419 100%);
 }
 
-.hero-decoration{
-  position:absolute;
-  right:-130px;
-  top:-180px;
-  width:600px;
-  height:600px;
-  border:2px solid rgba(246,200,95,.45);
-  border-radius:50%;
-}
-
-.hero-decoration:after{
+.hero:before{
   content:"";
   position:absolute;
-  inset:70px;
-  border:1px solid rgba(159,78,255,.45);
+  width:480px;
+  height:480px;
+  right:-170px;
+  top:180px;
   border-radius:50%;
+  background:rgba(139,61,255,.15);
+  filter:blur(80px);
 }
 
 .hero-content{
   position:relative;
-  z-index:2;
-  max-width:680px;
-  padding:55px;
+  z-index:5;
+  width:53%;
+  max-width:700px;
 }
 
-.eyebrow{
-  display:inline-block;
+.small-title{
   color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:4px;
   font-size:13px;
   font-weight:700;
-  letter-spacing:2px;
-  margin-bottom:18px;
-}
-
-.hero h1{
-  font-size:clamp(38px,6vw,68px);
-  line-height:1.08;
   margin-bottom:20px;
 }
 
+.hero h1{
+  font-size:clamp(38px,5vw,70px);
+  line-height:1.08;
+  margin-bottom:25px;
+  font-weight:800;
+}
+
 .hero h1 span{
-  background:linear-gradient(90deg,#fff,var(--gold2),#fff);
+  background:linear-gradient(90deg,#fff,#f5c9ed,#e7b65b);
   -webkit-background-clip:text;
   color:transparent;
 }
 
-.hero p{
-  color:#d2d6e8;
+.hero-shayari{
+  font-size:clamp(19px,2.3vw,28px);
+  line-height:1.55;
+  color:#f6eefa;
+  max-width:650px;
+  margin-bottom:34px;
+}
+
+.hero-shayari strong{
+  color:white;
+}
+
+.join-btn{
+  border:0;
+  color:white;
+  padding:16px 34px;
+  border-radius:32px;
   font-size:17px;
-  line-height:1.75;
-  max-width:600px;
-}
-
-.hero-buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:30px;
-}
-
-/* STATS */
-
-.stats{
-  max-width:1050px;
-  margin:0 auto;
-  padding:0 22px 60px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-.stat{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:25px;
-  text-align:center;
-}
-
-.stat strong{
-  display:block;
-  color:var(--gold);
-  font-size:30px;
-  margin-bottom:7px;
-}
-
-.stat span{
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* SECTIONS */
-
-section{
-  max-width:1250px;
-  margin:auto;
-  padding:70px 22px;
-}
-
-.section-heading{
-  text-align:center;
-  max-width:700px;
-  margin:0 auto 38px;
-}
-
-.section-heading .eyebrow{
-  margin-bottom:10px;
-}
-
-.section-heading h2{
-  font-size:36px;
-  margin-bottom:13px;
-}
-
-.section-heading p{
-  color:var(--muted);
-  line-height:1.7;
-}
-
-/* FEATURE CARDS */
-
-.feature-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.feature{
-  padding:28px 22px;
-  background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
-  border:1px solid var(--border);
-  border-radius:20px;
-  text-align:center;
-}
-
-.feature-icon{
-  width:58px;
-  height:58px;
-  margin:0 auto 18px;
-  display:grid;
-  place-items:center;
-  border-radius:18px;
-  background:linear-gradient(135deg,var(--purple),var(--pink));
-  font-size:25px;
-}
-
-.feature h3{
-  margin-bottom:9px;
-}
-
-.feature p{
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.6;
-}
-
-/* STORIES */
-
-.story-banner{
-  border-radius:25px;
-  padding:42px;
-  background:
-    linear-gradient(100deg,rgba(6,11,45,.95),rgba(53,11,72,.88)),
-    radial-gradient(circle at right,var(--pink),transparent 30%);
-  border:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:25px;
-}
-
-.story-banner h3{
-  font-size:30px;
-  margin-bottom:10px;
-}
-
-.story-banner p{
-  color:var(--muted);
-  line-height:1.7;
-}
-
-/* PREMIUM */
-
-.premium-section{
-  background:rgba(255,255,255,.025);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-
-.plans{
-  max-width:900px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
-}
-
-.plan{
-  position:relative;
-  padding:32px;
-  border-radius:24px;
-  background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
-  border:1px solid var(--border);
-}
-
-.plan.best{
-  border-color:rgba(246,200,95,.65);
-  box-shadow:0 0 40px rgba(246,200,95,.10);
-}
-
-.best-label{
-  position:absolute;
-  right:18px;
-  top:18px;
-  padding:7px 12px;
-  border-radius:20px;
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
-  color:#241500;
-  font-size:11px;
-  font-weight:800;
-}
-
-.plan h3{
-  font-size:22px;
-  margin-bottom:8px;
-}
-
-.plan-sub{
-  color:var(--muted);
-  font-size:14px;
-}
-
-.old-price{
-  color:#9da3bf;
-  text-decoration:line-through;
-  font-size:17px;
-  margin-top:25px;
-}
-
-.price-row{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin:3px 0 22px;
-}
-
-.price{
-  font-size:39px;
-  font-weight:800;
-}
-
-.discount{
-  background:rgba(242,45,145,.18);
-  border:1px solid rgba(242,45,145,.4);
-  color:#ff8ac3;
-  border-radius:20px;
-  padding:6px 9px;
-  font-size:12px;
   font-weight:700;
+  background:linear-gradient(90deg,var(--purple),var(--pink));
+  box-shadow:0 12px 35px rgba(139,61,255,.35);
+  transition:.25s;
 }
 
-.plan ul{
-  list-style:none;
-  margin:20px 0 25px;
+.join-btn:hover{
+  transform:translateY(-2px);
 }
 
-.plan li{
-  padding:8px 0;
-  color:#e2e5f3;
-  font-size:14px;
+.trust-row{
+  display:flex;
+  gap:45px;
+  margin-top:55px;
 }
 
-.plan li:before{
-  content:"✓";
+.trust-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.trust-icon{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(231,182,91,.12);
+  border:1px solid rgba(231,182,91,.4);
   color:var(--gold);
-  font-weight:bold;
-  margin-right:9px;
+  font-size:18px;
 }
 
-/* FOOTER */
-
-footer{
-  max-width:1250px;
-  margin:auto;
-  padding:60px 22px 25px;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.3fr repeat(3,1fr);
-  gap:35px;
-  padding-bottom:35px;
-}
-
-.footer-col h4{
-  margin-bottom:16px;
-}
-
-.footer-col a{
+.trust-text strong{
   display:block;
-  color:var(--muted);
-  font-size:13px;
-  margin:9px 0;
+  font-size:16px;
 }
 
-.footer-col a:hover{
-  color:var(--gold);
+.trust-text small{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* decorative visual - no fake member profiles */
+.hero-art{
+  position:absolute;
+  right:5%;
+  width:39%;
+  height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.glow{
+  position:absolute;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(139,61,255,.35),rgba(240,68,183,.2));
+  filter:blur(15px);
+}
+
+.art-card{
+  position:relative;
+  width:min(380px,80%);
+  height:470px;
+  border-radius:190px 190px 35px 35px;
+  border:1px solid rgba(255,255,255,.15);
+  background:
+    radial-gradient(circle at 50% 25%,rgba(240,68,183,.45),transparent 22%),
+    linear-gradient(160deg,#291053,#0c061b 70%);
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.5),
+    0 0 80px rgba(139,61,255,.22);
+  overflow:hidden;
+}
+
+.art-card:before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  left:100px;
+  top:70px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#f6c3a8,#9a5480);
+  opacity:.72;
+}
+
+.art-card:after{
+  content:"♥";
+  position:absolute;
+  font-size:120px;
+  color:rgba(240,68,183,.18);
+  left:50%;
+  top:48%;
+  transform:translate(-50%,-50%);
+}
+
+.art-caption{
+  position:absolute;
+  bottom:28px;
+  left:0;
+  right:0;
+  text-align:center;
+  color:#f6eefa;
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+  background:#060310;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:45px 6% 25px;
+}
+
+.footer-top{
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.footer-brand{
+  max-width:330px;
 }
 
 .footer-brand p{
-  color:var(--muted);
-  font-size:14px;
+  color:#a99fb9;
   line-height:1.7;
-  margin:15px 0;
-  max-width:310px;
+  margin-top:15px;
+  font-size:14px;
+}
+
+.footer-links{
+  display:flex;
+  gap:55px;
+  flex-wrap:wrap;
+}
+
+.footer-column h3{
+  color:var(--gold);
+  font-size:14px;
+  margin-bottom:16px;
+}
+
+.footer-column button{
+  display:block;
+  background:none;
+  border:0;
+  color:#bcb3c8;
+  margin:9px 0;
+  padding:0;
+  font-size:13px;
 }
 
 .socials{
   display:flex;
   gap:9px;
+  margin-top:18px;
 }
 
 .social{
-  width:38px;
-  height:38px;
-  display:grid;
-  place-items:center;
-  border:1px solid var(--border);
+  width:35px;
+  height:35px;
   border-radius:50%;
-  color:#fff;
-  font-size:14px;
-}
-
-.footer-bottom{
-  border-top:1px solid var(--border);
-  padding-top:22px;
+  border:1px solid rgba(255,255,255,.22);
   display:flex;
-  justify-content:space-between;
-  gap:15px;
-  flex-wrap:wrap;
-  color:#9fa6c3;
+  align-items:center;
+  justify-content:center;
+  color:white;
   font-size:12px;
 }
 
-/* MODAL */
-
-.modal{
-  position:fixed;
-  inset:0;
-  z-index:500;
-  display:none;
-  place-items:center;
-  padding:20px;
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(8px);
+.footer-bottom{
+  margin-top:35px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.08);
+  text-align:center;
+  color:#81778e;
+  font-size:12px;
 }
 
-.modal.active{
-  display:grid;
+/* ================= AUTH ================= */
+
+.auth-page{
+  min-height:100vh;
+  padding:110px 20px 50px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(139,61,255,.22),transparent 30%),
+    radial-gradient(circle at 80% 80%,rgba(240,68,183,.18),transparent 30%),
+    #09051a;
 }
 
-.modal-box{
+.auth-box{
   width:min(480px,100%);
-  max-height:90vh;
-  overflow:auto;
-  background:linear-gradient(145deg,#0a1240,#1b0a39);
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:30px;
-  position:relative;
+  padding:38px;
+  border-radius:25px;
+  background:rgba(18,8,42,.88);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 25px 80px rgba(0,0,0,.45);
 }
 
-.close{
-  position:absolute;
-  right:18px;
-  top:15px;
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:27px;
+.auth-logo{
+  justify-content:center;
+  margin-bottom:25px;
 }
 
-.modal-box h2{
-  margin-bottom:7px;
+.auth-box h2{
+  text-align:center;
+  font-size:29px;
+  margin-bottom:9px;
 }
 
-.modal-box > p{
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:22px;
+.auth-subtitle{
+  text-align:center;
+  color:#aaa0b7;
+  margin-bottom:28px;
+  font-size:14px;
 }
 
 .form-group{
-  margin-bottom:14px;
+  margin-bottom:16px;
 }
 
 .form-group label{
   display:block;
-  font-size:12px;
-  color:#cfd4e9;
-  margin-bottom:6px;
+  margin-bottom:7px;
+  color:#ddd4e5;
+  font-size:13px;
 }
 
-.input,
-select{
+.form-group input,
+.form-group select,
+.form-group textarea{
   width:100%;
   padding:13px 14px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.07);
-  color:#fff;
+  border-radius:11px;
+  border:1px solid rgba(255,255,255,.13);
+  background:#0c061c;
+  color:white;
   outline:none;
 }
 
-select option{
-  color:#111;
+.form-group textarea{
+  min-height:110px;
+  resize:vertical;
 }
 
-.gender-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.gender{
-  padding:12px;
-  text-align:center;
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:#ddd;
-  cursor:pointer;
-}
-
-.gender.selected{
-  border-color:var(--purple2);
-  background:rgba(109,44,255,.2);
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--purple);
 }
 
 .check{
   display:flex;
   gap:9px;
   align-items:flex-start;
-  color:#bfc5dd;
+  color:#bcb2c5;
   font-size:12px;
   line-height:1.5;
-  margin:12px 0;
+  margin:13px 0;
 }
 
 .check input{
   margin-top:3px;
 }
 
-/* RESPONSIVE */
-
-@media(max-width:900px){
-  .nav-links{
-    display:none;
-  }
-
-  .feature-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .footer-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .hero-content{
-    padding:40px 28px;
-  }
+.auth-submit{
+  width:100%;
+  border:0;
+  color:white;
+  background:linear-gradient(90deg,var(--purple),var(--pink));
+  padding:14px;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:700;
+  margin-top:8px;
 }
 
-@media(max-width:650px){
-  .navbar{
-    padding:9px 14px;
+.auth-switch{
+  text-align:center;
+  margin-top:22px;
+  color:#aaa0b7;
+  font-size:13px;
+}
+
+.auth-switch button,
+.forgot{
+  background:none;
+  border:0;
+  color:#e5a9ff;
+  font-weight:700;
+}
+
+.back-home{
+  position:absolute;
+  top:25px;
+  left:25px;
+  color:#cfc4d8;
+  background:none;
+  border:0;
+}
+
+/* ================= DASHBOARD PLACEHOLDER ================= */
+
+.dashboard{
+  min-height:100vh;
+  background:#faf9fc;
+  color:#1b1524;
+}
+
+.dashboard-header{
+  height:75px;
+  background:#100720;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 25px;
+}
+
+.dashboard-body{
+  display:flex;
+  min-height:calc(100vh - 75px);
+}
+
+.sidebar{
+  width:220px;
+  background:#140a25;
+  padding:20px 12px;
+}
+
+.side-btn{
+  width:100%;
+  border:0;
+  background:transparent;
+  color:#d7cedf;
+  text-align:left;
+  padding:13px 15px;
+  border-radius:10px;
+  margin-bottom:6px;
+}
+
+.side-btn:hover{
+  background:rgba(139,61,255,.18);
+  color:white;
+}
+
+.dashboard-main{
+  flex:1;
+  padding:35px;
+}
+
+.empty-box{
+  margin-top:25px;
+  min-height:300px;
+  border:1px dashed #d6cfe0;
+  border-radius:18px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#81778e;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:800px){
+
+  .header{
+    padding:17px 20px;
   }
 
-  .logo-img{
-    width:43px;
-    height:43px;
+  .logo-mark{
+    width:42px;
+    height:42px;
   }
 
-  .logo-text{
+  .logo-name{
     font-size:21px;
   }
 
-  .nav-actions .btn{
-    padding:9px 13px;
-    font-size:12px;
+  .nav{
+    gap:4px;
+  }
+
+  .nav button{
+    padding:9px 10px;
+    font-size:13px;
   }
 
   .hero{
-    padding:25px 14px 35px;
-  }
-
-  .hero-card{
-    min-height:530px;
-    border-radius:22px;
+    padding:115px 22px 50px;
+    display:block;
   }
 
   .hero-content{
-    padding:30px 22px;
+    width:100%;
+    text-align:center;
   }
 
   .hero h1{
-    font-size:40px;
+    font-size:42px;
   }
 
-  .hero p{
-    font-size:15px;
+  .hero-shayari{
+    font-size:19px;
   }
 
-  .stats{
-    grid-template-columns:1fr;
-    padding:0 14px 35px;
+  .hero-art{
+    position:relative;
+    right:auto;
+    width:100%;
+    height:350px;
+    margin-top:35px;
   }
 
-  section{
-    padding:50px 14px;
+  .art-card{
+    width:245px;
+    height:320px;
   }
 
-  .section-heading h2{
-    font-size:29px;
+  .art-card:before{
+    width:120px;
+    height:120px;
+    left:62px;
+    top:48px;
   }
 
-  .feature-grid{
-    grid-template-columns:1fr 1fr;
-    gap:11px;
+  .trust-row{
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:38px;
   }
 
-  .feature{
-    padding:22px 12px;
+  .trust-item{
+    gap:7px;
   }
 
-  .story-banner{
-    padding:28px 20px;
-    flex-direction:column;
-    align-items:flex-start;
+  .trust-text strong{
+    font-size:13px;
   }
 
-  .plans{
-    grid-template-columns:1fr;
+  .footer-links{
+    gap:25px;
   }
 
-  .plan{
-    padding:25px 20px;
+  .auth-box{
+    padding:27px 20px;
   }
 
-  .footer-grid{
-    grid-template-columns:1fr 1fr;
-    gap:25px 18px;
+  .sidebar{
+    width:72px;
   }
 
-  .footer-brand{
-    grid-column:1/-1;
+  .side-btn{
+    text-align:center;
+    font-size:0;
+  }
+
+  .side-btn:before{
+    content:"•";
+    font-size:22px;
+  }
+
+  .dashboard-main{
+    padding:20px;
   }
 }
 
-@media(max-width:420px){
-  .feature-grid{
-    grid-template-columns:1fr;
+@media(max-width:430px){
+  .nav .login-btn{
+    display:none;
   }
 
-  .footer-grid{
-    grid-template-columns:1fr;
+  .logo-name{
+    font-size:19px;
   }
 
-  .footer-brand{
-    grid-column:auto;
+  .hero h1{
+    font-size:35px;
+  }
+
+  .trust-row{
+    flex-direction:column;
+    align-items:center;
   }
 }
 </style>
@@ -751,734 +708,479 @@ select option{
 
 <body>
 
-<!-- HEADER -->
+<!-- ================= HOME ================= -->
 
-<header>
-  <div class="navbar">
+<section id="homePage" class="page active">
 
-    <a href="#home" class="logo-box">
-      <img src="logo.png"
-           class="logo-img"
-           alt="MilteHain logo">
-      <div class="logo-text">
-        Milte<span>Hain</span>
-      </div>
-    </a>
+<header class="header">
 
-    <nav class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#discover">Discover</a>
-      <a href="#stories">Stories</a>
-      <a href="#premium">Premium</a>
-      <a href="#about">About Us</a>
-    </nav>
+  <button class="logo" onclick="showPage('homePage')">
+    <div class="logo-mark"><span>M</span></div>
+    <div class="logo-name">Milte<b>Hain</b></div>
+  </button>
 
-    <div class="nav-actions">
-      <button class="btn btn-outline" onclick="openModal('login')">
-        Login
-      </button>
+  <nav class="nav">
+    <button class="login-btn" onclick="showPage('loginPage')">Login</button>
+    <button class="register-btn" onclick="showPage('registerPage')">Register</button>
+  </nav>
 
-      <button class="btn btn-primary" onclick="openModal('register')">
-        Register
-      </button>
-    </div>
-
-  </div>
 </header>
 
+<main class="hero">
 
-<!-- HOME -->
+  <div class="hero-content">
 
-<main id="home">
+    <div class="small-title">Meaningful Connections</div>
 
-<section class="hero">
+    <h1>
+      Find Someone<br>
+      <span>Worth Meeting.</span>
+    </h1>
 
-  <div class="hero-card">
-
-    <div class="hero-decoration"></div>
-
-    <div class="hero-content">
-
-      <div class="eyebrow">
-        ✦ MEANINGFUL CONNECTIONS
-      </div>
-
-      <h1>
-        Kyunki har rishte ki shuruaat
-        <span>ek mulaqat</span> se hoti hai...
-      </h1>
-
-      <p>
-        MilteHain par kisi naye insaan se miliye,
-        meaningful conversations shuru kijiye aur
-        apni connection journey ko aage badhaiye.
-      </p>
-
-      <div class="hero-buttons">
-
-        <button class="btn btn-primary"
-                onclick="openModal('register')">
-          Join Now →
-        </button>
-
-        <a href="#stories" class="btn btn-outline">
-          Read Stories
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- STATS -->
-
-<div class="stats">
-
-  <div class="stat">
-    <strong>100%</strong>
-    <span>Verified Profiles</span>
-  </div>
-
-  <div class="stat">
-    <strong>95%</strong>
-    <span>Success Rate</span>
-  </div>
-
-</div>
-
-
-<!-- DISCOVER -->
-
-<section id="discover">
-
-  <div class="section-heading">
-
-    <div class="eyebrow">DISCOVER MILTEHAIN</div>
-
-    <h2>Find someone worth talking to.</h2>
-
-    <p>
-      Discover people according to your preferences
-      and start meaningful conversations.
+    <p class="hero-shayari">
+      Kyunki Har Rishte Ki Shuruaat Ek Mulakat Se Hoti Hai…
     </p>
 
-  </div>
-
-
-  <div class="feature-grid">
-
-    <div class="feature">
-      <div class="feature-icon">💜</div>
-      <h3>Smart Matches</h3>
-      <p>
-        Discover profiles based on your selected preferences.
-      </p>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">✓</div>
-      <h3>Verified Profiles</h3>
-      <p>
-        Profiles can be manually verified for a safer community.
-      </p>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">🔒</div>
-      <h3>Privacy First</h3>
-      <p>
-        Your personal information should remain protected.
-      </p>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">💬</div>
-      <h3>Easy Communication</h3>
-      <p>
-        Connect through real conversations after access is unlocked.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- STORIES -->
-
-<section id="stories">
-
-  <div class="story-banner">
-
-    <div>
-      <div class="eyebrow">SUCCESS STORIES</div>
-
-      <h3>Real connections. Meaningful stories.</h3>
-
-      <p>
-        Read stories from people who found meaningful
-        connections through MilteHain.
-      </p>
-    </div>
-
-    <button class="btn btn-primary"
-            onclick="showMessage('Stories page will be connected here.')">
-      Read Stories →
+    <button class="join-btn" onclick="showPage('registerPage')">
+      Join Now
     </button>
 
-  </div>
+    <div class="trust-row">
 
-</section>
-
-
-<!-- PREMIUM -->
-
-<section id="premium" class="premium-section">
-
-  <div class="section-heading">
-
-    <div class="eyebrow">MILTEHAIN PREMIUM</div>
-
-    <h2>More ways to connect.</h2>
-
-    <p>
-      Unlock Premium features and get more from your
-      MilteHain experience.
-    </p>
-
-  </div>
-
-
-  <div class="plans">
-
-    <!-- 1 MONTH -->
-
-    <div class="plan">
-
-      <h3>1 Month</h3>
-
-      <div class="plan-sub">
-        Premium Membership
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        <div class="trust-text">
+          <strong>100% Verified Profiles</strong>
+          <small>Safe &amp; genuine community</small>
+        </div>
       </div>
 
-      <div class="old-price">₹449</div>
-
-      <div class="price-row">
-        <div class="price">₹389</div>
-        <div class="discount">13% OFF</div>
+      <div class="trust-item">
+        <div class="trust-icon">★</div>
+        <div class="trust-text">
+          <strong>95% Success Rate</strong>
+          <small>Meaningful connections</small>
+        </div>
       </div>
-
-      <ul>
-        <li>Unlimited Chats</li>
-        <li>See Who Liked You</li>
-        <li>Advanced Filters</li>
-        <li>Priority Support</li>
-        <li>Top List Placement</li>
-      </ul>
-
-      <button class="btn btn-primary"
-              style="width:100%"
-              onclick="showMessage('Payment will be connected with Cashfree.')">
-        Get Premium
-      </button>
-
-    </div>
-
-
-    <!-- 3 MONTH -->
-
-    <div class="plan best">
-
-      <div class="best-label">BEST VALUE</div>
-
-      <h3>3 Months</h3>
-
-      <div class="plan-sub">
-        Premium Membership
-      </div>
-
-      <div class="old-price">₹1,347</div>
-
-      <div class="price-row">
-        <div class="price">₹989</div>
-        <div class="discount">27% OFF</div>
-      </div>
-
-      <ul>
-        <li>Unlimited Chats</li>
-        <li>See Who Liked You</li>
-        <li>Advanced Filters</li>
-        <li>Priority Support</li>
-        <li>Top List Placement</li>
-      </ul>
-
-      <button class="btn btn-gold"
-              style="width:100%"
-              onclick="showMessage('Payment will be connected with Cashfree.')">
-        Get Premium
-      </button>
 
     </div>
 
   </div>
 
-</section>
-
-
-<!-- ABOUT -->
-
-<section id="about">
-
-  <div class="section-heading">
-
-    <div class="eyebrow">ABOUT MILTEHAIN</div>
-
-    <h2>Meet. Talk. Connect.</h2>
-
-    <p>
-      MilteHain is being created as a platform where
-      adults can discover people, make connections and
-      have meaningful conversations in a safer environment.
-    </p>
-
+  <div class="hero-art">
+    <div class="glow"></div>
+    <div class="art-card">
+      <div class="art-caption">Where meaningful connections begin</div>
+    </div>
   </div>
-
-  <div class="feature-grid">
-
-    <div class="feature">
-      <div class="feature-icon">👤</div>
-      <h3>Your Profile</h3>
-      <p>
-        Add your information, interests and up to three photos.
-      </p>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">🔍</div>
-      <h3>Discover</h3>
-      <p>
-        Use age, hobbies, smoking and drinking preferences.
-      </p>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">🛡️</div>
-      <h3>Safety</h3>
-      <p>
-        Block and report options will be available throughout
-        the platform.
-      </p>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">💬</div>
-      <h3>Chat</h3>
-      <p>
-        Real-time messaging will be connected through the
-        secure backend.
-      </p>
-    </div>
-
-  </div>
-
-</section>
 
 </main>
 
+<footer class="footer">
 
-<!-- REGISTER MODAL -->
-
-<div class="modal" id="registerModal">
-
-  <div class="modal-box">
-
-    <button class="close" onclick="closeModal('register')">
-      ×
-    </button>
-
-    <h2>Create Your Account</h2>
-
-    <p>
-      Join MilteHain and start your connection journey.
-    </p>
-
-    <form onsubmit="registerDemo(event)">
-
-      <div class="form-group">
-        <label>Full Name</label>
-        <input class="input"
-               type="text"
-               placeholder="Enter your full name"
-               required>
-      </div>
-
-      <div class="form-group">
-        <label>Email Address</label>
-        <input class="input"
-               type="email"
-               placeholder="Enter your email"
-               required>
-      </div>
-
-      <div class="form-group">
-        <label>Mobile Number (Optional)</label>
-        <input class="input"
-               type="tel"
-               placeholder="Enter mobile number">
-      </div>
-
-      <div class="form-group">
-
-        <label>Gender</label>
-
-        <div class="gender-row">
-
-          <div class="gender"
-               onclick="selectGender(this)">
-            Male
-          </div>
-
-          <div class="gender"
-               onclick="selectGender(this)">
-            Female
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-        <input class="input"
-               type="password"
-               placeholder="Create a password"
-               required>
-      </div>
-
-      <label class="check">
-        <input type="checkbox" required>
-        <span>
-          I agree to the Terms & Conditions and Privacy Policy.
-        </span>
-      </label>
-
-      <label class="check">
-        <input type="checkbox" required>
-        <span>
-          I confirm that I am 18 years of age or older.
-        </span>
-      </label>
-
-      <button class="btn btn-primary"
-              style="width:100%;margin-top:8px"
-              type="submit">
-        Create Account
-      </button>
-
-    </form>
-
-  </div>
-
-</div>
-
-
-<!-- LOGIN MODAL -->
-
-<div class="modal" id="loginModal">
-
-  <div class="modal-box">
-
-    <button class="close" onclick="closeModal('login')">
-      ×
-    </button>
-
-    <h2>Welcome Back</h2>
-
-    <p>
-      Login to continue your MilteHain journey.
-    </p>
-
-    <form onsubmit="loginDemo(event)">
-
-      <div class="form-group">
-        <label>Email Address</label>
-        <input class="input"
-               type="email"
-               placeholder="Enter your email"
-               required>
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-        <input class="input"
-               type="password"
-               placeholder="Enter your password"
-               required>
-      </div>
-
-      <button class="btn btn-primary"
-              style="width:100%"
-              type="submit">
-        Login
-      </button>
-
-      <button type="button"
-              class="btn btn-outline"
-              style="width:100%;margin-top:10px"
-              onclick="showMessage('Account recovery will be connected with Supabase.')">
-        Forgot Password?
-      </button>
-
-    </form>
-
-  </div>
-
-</div>
-
-
-<!-- MESSAGE -->
-
-<div class="modal" id="messageModal">
-
-  <div class="modal-box" style="text-align:center">
-
-    <button class="close"
-            onclick="closeMessage()">
-      ×
-    </button>
-
-    <div style="font-size:45px;margin-bottom:15px">
-      💜
-    </div>
-
-    <h2 id="messageTitle">
-      MilteHain
-    </h2>
-
-    <p id="messageText"
-       style="margin-top:10px">
-    </p>
-
-    <button class="btn btn-primary"
-            onclick="closeMessage()"
-            style="margin-top:10px">
-      OK
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-  <div class="footer-grid">
+  <div class="footer-top">
 
     <div class="footer-brand">
 
-      <div class="logo-box">
-
-        <img src="logo.png"
-             class="logo-img"
-             alt="MilteHain logo">
-
-        <div class="logo-text">
-          Milte<span>Hain</span>
-        </div>
-
-      </div>
+      <button class="logo" onclick="showPage('homePage')">
+        <div class="logo-mark"><span>M</span></div>
+        <div class="logo-name">Milte<b>Hain</b></div>
+      </button>
 
       <p>
-        Meet someone new. Make a connection.
-        Meaningful conversations start here.
+        A place to meet genuine people and build meaningful connections.
       </p>
 
       <div class="socials">
-
-        <!-- Links will be added later -->
-
-        <a class="social"
-           href="#"
-           onclick="return false;"
-           aria-label="WhatsApp">
-          WA
-        </a>
-
-        <a class="social"
-           href="#"
-           onclick="return false;"
-           aria-label="Facebook">
-          f
-        </a>
-
-        <a class="social"
-           href="#"
-           onclick="return false;"
-           aria-label="Instagram">
-          IG
-        </a>
-
-        <a class="social"
-           href="#"
-           onclick="return false;"
-           aria-label="LinkedIn">
-          in
-        </a>
-
+        <div class="social">WA</div>
+        <div class="social">IG</div>
+        <div class="social">in</div>
+        <div class="social">f</div>
       </div>
 
     </div>
 
+    <div class="footer-links">
 
-    <div class="footer-col">
+      <div class="footer-column">
+        <h3>Information</h3>
+        <button onclick="showInfo('Contact Us')">Contact Us</button>
+        <button onclick="showInfo('Privacy Policy')">Privacy Policy</button>
+        <button onclick="showInfo('Terms & Conditions')">Terms &amp; Conditions</button>
+        <button onclick="showInfo('Refund Policy')">Refund Policy</button>
+      </div>
 
-      <h4>Important</h4>
+      <div class="footer-column">
+        <h3>Safety</h3>
+        <button onclick="showInfo('Safety/Security')">Safety/Security</button>
+        <button onclick="showInfo('Community Guidelines')">Community Guidelines</button>
+        <button onclick="showInfo('Help & Support')">Help &amp; Support</button>
+      </div>
 
-      <a href="#about">About Us</a>
-      <a href="#premium">Premium</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms & Conditions</a>
-
-    </div>
-
-
-    <div class="footer-col">
-
-      <h4>Safety & Support</h4>
-
-      <a href="#">Refund Policy</a>
-      <a href="#">Safety & Security</a>
-      <a href="#">Community Guidelines</a>
-      <a href="#">Help & Support</a>
-
-    </div>
-
-
-    <div class="footer-col">
-
-      <h4>Contact</h4>
-
-      <a href="mailto:Support.MilteHain@gmail.com">
-        Support.MilteHain@gmail.com
-      </a>
-
-      <a href="#">Grievance Contact</a>
-      <a href="#">Account Deletion</a>
+      <div class="footer-column">
+        <h3>Stories</h3>
+        <button onclick="showInfo('Read Stories')">Read Stories</button>
+      </div>
 
     </div>
 
   </div>
 
-
   <div class="footer-bottom">
-
-    <span>
-      © 2026 MilteHain. All Rights Reserved.
-    </span>
-
-    <span>
-      18+ | Use responsibly
-    </span>
-
+    © 2026 MilteHain. All Rights Reserved.
   </div>
 
 </footer>
 
+</section>
+
+
+<!-- ================= REGISTER ================= -->
+
+<section id="registerPage" class="page">
+
+<button class="back-home" onclick="showPage('homePage')">← Home</button>
+
+<div class="auth-page">
+
+<div class="auth-box">
+
+  <div class="logo auth-logo">
+    <div class="logo-mark"><span>M</span></div>
+    <div class="logo-name">Milte<b>Hain</b></div>
+  </div>
+
+  <h2>Create Your Account</h2>
+  <p class="auth-subtitle">Step into a world of meaningful connections</p>
+
+  <form onsubmit="createAccount(event)">
+
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" required placeholder="Enter your full name">
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" required placeholder="Enter your email">
+    </div>
+
+    <div class="form-group">
+      <label>Mobile Number</label>
+      <input type="tel" placeholder="Optional">
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" required placeholder="Create a password">
+    </div>
+
+    <div class="form-group">
+      <label>Gender</label>
+      <select required>
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
+
+    <label class="check">
+      <input type="checkbox" required>
+      <span>I confirm that I am 18 years or older.</span>
+    </label>
+
+    <label class="check">
+      <input type="checkbox" required>
+      <span>I agree to the Terms &amp; Conditions and Privacy Policy.</span>
+    </label>
+
+    <button class="auth-submit" type="submit">
+      Create Account
+    </button>
+
+  </form>
+
+  <div class="auth-switch">
+    Already have an account?
+    <button onclick="showPage('loginPage')">Login</button>
+  </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= LOGIN ================= -->
+
+<section id="loginPage" class="page">
+
+<button class="back-home" onclick="showPage('homePage')">← Home</button>
+
+<div class="auth-page">
+
+<div class="auth-box">
+
+  <div class="logo auth-logo">
+    <div class="logo-mark"><span>M</span></div>
+    <div class="logo-name">Milte<b>Hain</b></div>
+  </div>
+
+  <h2>Welcome Back!</h2>
+  <p class="auth-subtitle">Login to continue your journey</p>
+
+  <form onsubmit="loginUser(event)">
+
+    <div class="form-group">
+      <label>Email or Mobile Number</label>
+      <input type="text" required placeholder="Email or mobile number">
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" required placeholder="Enter your password">
+    </div>
+
+    <div style="text-align:right;margin-bottom:15px;">
+      <button type="button" class="forgot" onclick="showInfo('Forgot Password')">
+        Forgot Password?
+      </button>
+    </div>
+
+    <button class="auth-submit" type="submit">
+      Login
+    </button>
+
+  </form>
+
+  <div class="auth-switch">
+    Don't have an account?
+    <button onclick="showPage('registerPage')">Register</button>
+  </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= PROFILE SETUP ================= -->
+
+<section id="profilePage" class="page">
+
+<div class="auth-page">
+
+<div class="auth-box">
+
+  <div class="logo auth-logo">
+    <div class="logo-mark"><span>M</span></div>
+    <div class="logo-name">Milte<b>Hain</b></div>
+  </div>
+
+  <h2>Profile Setup</h2>
+  <p class="auth-subtitle">Complete your profile to get started</p>
+
+  <form onsubmit="finishProfile(event)">
+
+    <div class="form-group">
+      <label>Add Photos — Maximum 3</label>
+      <input type="file" accept="image/*" multiple>
+    </div>
+
+    <div class="form-group">
+      <label>Photo Verification</label>
+      <select>
+        <option>Request Verification</option>
+        <option>Skip for now</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>City / Location</label>
+      <input type="text" required placeholder="Enter your city">
+    </div>
+
+    <div class="form-group">
+      <label>Who do you want to see?</label>
+      <select required>
+        <option value="">Select</option>
+        <option>Men</option>
+        <option>Women</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Tell people about yourself and your interest</label>
+      <textarea placeholder="Write something about yourself..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Hobbies</label>
+      <input type="text" placeholder="Your hobbies">
+    </div>
+
+    <div class="form-group">
+      <label>Smoking Preference</label>
+      <select>
+        <option>Non-smoker</option>
+        <option>Smoker</option>
+        <option>Occasionally</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Drink Preference</label>
+      <select>
+        <option>Non-drinker</option>
+        <option>Drinker</option>
+        <option>Occasionally</option>
+      </select>
+    </div>
+
+    <button class="auth-submit" type="submit">
+      Save Profile
+    </button>
+
+  </form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboardPage" class="page dashboard">
+
+<header class="dashboard-header">
+
+  <div class="logo">
+    <div class="logo-mark"><span>M</span></div>
+    <div class="logo-name">Milte<b>Hain</b></div>
+  </div>
+
+  <div>Hi, <strong id="userName">there</strong></div>
+
+</header>
+
+<div class="dashboard-body">
+
+<aside class="sidebar">
+
+  <button class="side-btn">Home</button>
+  <button class="side-btn">Discover</button>
+  <button class="side-btn">My Matches</button>
+  <button class="side-btn">Messages</button>
+  <button class="side-btn">Profiles</button>
+  <button class="side-btn" onclick="showInfo('Premium')">Premium</button>
+  <button class="side-btn">Settings</button>
+
+</aside>
+
+<main class="dashboard-main">
+
+  <h1>Welcome to MilteHain</h1>
+  <p style="margin-top:8px;color:#756b80;">
+    Your meaningful connections will appear here.
+  </p>
+
+  <div class="empty-box">
+    <div>
+      <strong>No profiles yet</strong>
+      <p style="margin-top:8px;">
+        Genuine members will appear here as people join MilteHain.
+      </p>
+    </div>
+  </div>
+
+</main>
+
+</div>
+
+</section>
+
 
 <script>
 
-function openModal(type){
+/* ================= PAGE NAVIGATION ================= */
 
-  if(type === "register"){
-    document.getElementById("registerModal")
-      .classList.add("active");
+function showPage(pageId){
+
+  document.querySelectorAll(".page").forEach(function(page){
+    page.classList.remove("active");
+  });
+
+  document.getElementById(pageId).classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+}
+
+
+/* ================= INFORMATION ================= */
+
+function showInfo(title){
+
+  if(title === "Read Stories"){
+    alert("Stories will be added soon.");
+    return;
   }
 
-  if(type === "login"){
-    document.getElementById("loginModal")
-      .classList.add("active");
+  if(title === "Premium"){
+    alert("Premium will be available on the separate Premium page.");
+    return;
   }
 
+  alert(title + " page will be connected during the next setup step.");
 }
 
-function closeModal(type){
 
-  if(type === "register"){
-    document.getElementById("registerModal")
-      .classList.remove("active");
-  }
+/* ================= REGISTER ================= */
 
-  if(type === "login"){
-    document.getElementById("loginModal")
-      .classList.remove("active");
-  }
-
-}
-
-function selectGender(element){
-
-  document.querySelectorAll(".gender")
-    .forEach(function(item){
-      item.classList.remove("selected");
-    });
-
-  element.classList.add("selected");
-}
-
-function showMessage(message){
-
-  document.getElementById("messageText")
-    .textContent = message;
-
-  document.getElementById("messageModal")
-    .classList.add("active");
-}
-
-function closeMessage(){
-
-  document.getElementById("messageModal")
-    .classList.remove("active");
-}
-
-function registerDemo(event){
+function createAccount(event){
 
   event.preventDefault();
 
-  closeModal("register");
+  const nameInput =
+    document.querySelector("#registerPage input[type='text']");
 
-  showMessage(
-    "Account creation will be connected to the secure MilteHain backend."
-  );
+  const name =
+    nameInput ? nameInput.value.trim() : "";
+
+  if(name){
+    document.getElementById("userName").textContent = name;
+  }
+
+  showPage("profilePage");
 }
 
-function loginDemo(event){
+
+/* ================= LOGIN ================= */
+
+function loginUser(event){
 
   event.preventDefault();
 
-  closeModal("login");
-
-  showMessage(
-    "Login will be connected to the secure MilteHain backend."
-  );
+  showPage("dashboardPage");
 }
 
-window.addEventListener("click",function(event){
 
-  if(event.target.classList.contains("modal")){
+/* ================= PROFILE ================= */
 
-    event.target.classList.remove("active");
+function finishProfile(event){
 
-  }
+  event.preventDefault();
 
-});
+  showPage("dashboardPage");
+}
 
 </script>
 
 </body>
-  </html>
+    </html>
