@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MilteHain — Create Your Account</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif}
+body{
+background:
+radial-gradient(circle at 8% 12%,rgba(255,145,177,.15),transparent 18%),
+radial-gradient(circle at 92% 85%,rgba(255,185,79,.13),transparent 20%),
+linear-gradient(135deg,#fdfcff 0%,#f7f7ff 55%,#fffaf7 100%);
+color:#17234b;
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px}
+.auth-card{
+width:min(100%,610px);min-height:700px;position:relative;overflow:hidden;
+background:rgba(255,255,255,.95);border:1px solid #dfe7f3;border-radius:18px;
+box-shadow:0 10px 35px rgba(35,56,100,.12);padding:28px 44px 25px;
+}
+.heart{position:absolute;font-size:54px;color:#f9b7c9;opacity:.22;line-height:1;pointer-events:none}
+.h1{top:32px;left:18px}.h2{top:30px;right:18px;font-size:48px}
+.h3{bottom:24px;left:15px;font-size:45px}.h4{bottom:20px;right:18px;font-size:35px;color:#efb84f}
+.brand{text-align:center;position:relative;z-index:2}
+.logo{width:176px;height:auto;display:block;margin:0 auto 12px}
+.heading{font:700 27px Georgia,"Times New Roman",serif;color:#17245a;margin:0 0 6px}
+.subheading{font-size:14px;color:#6d7b99;margin:0 0 22px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;height:46px;border:1px solid #dce4ef;border-radius:9px;overflow:hidden;margin-bottom:22px;position:relative;z-index:2}
+.tab{border:0;background:#fff;color:#33446b;font-weight:700}
+.tab.active{color:#fff;background:linear-gradient(100deg,#4f16e8,#7a29f6);box-shadow:0 4px 12px rgba(91,20,230,.22)}
+.form{position:relative;z-index:2}
+.field{position:relative;margin-bottom:12px}
+.field input{width:100%;height:56px;border:1px solid #dce4ef;border-radius:9px;background:#fff;padding:19px 14px 5px 50px;outline:none;color:#17234b}
+.field input:focus,.select:focus{border-color:#7040ee;box-shadow:0 0 0 3px rgba(112,64,238,.08)}
+.field label{position:absolute;left:50px;top:7px;font-size:10px;white-space:nowrap;font-weight:700;color:#7382a0;z-index:1}
+.icon{position:absolute;left:16px;top:17px;color:#596d99;font-size:20px;z-index:1}
+.password-eye{position:absolute;right:15px;top:18px;color:#6f7d9a;font-size:18px}
+.section-label{font-size:12px;font-weight:700;color:#33446b;margin:12px 0 7px}
+.gender{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.gender label{height:47px;border:1px solid #dce4ef;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#33446b;font-weight:700;background:#fff}
+.gender input{display:none}
+.gender input:checked+span{color:#5b20e8}
+.gender label:has(input:checked){border-color:#9d7cff;box-shadow:0 0 0 2px rgba(124,65,242,.08)}
+.dob{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.select{width:100%;height:47px;border:1px solid #dce4ef;border-radius:9px;background:#fff;padding:0 12px;color:#596b8d;outline:none}
+.checks{margin:14px 0 8px;display:grid;gap:9px}
+.check{display:flex;align-items:flex-start;gap:8px;color:#596b8d;font-size:11px;line-height:1.45}
+.check input{width:17px;height:17px;margin:1px 0 0;accent-color:#5d20e8;flex:0 0 auto}
+.check a,.below a{color:#4f20dc;font-weight:700}
+.main-btn{width:100%;height:53px;border:0;border-radius:10px;background:linear-gradient(100deg,#4e16e8,#7d2cf7);color:#fff;font-weight:700;font-size:16px;box-shadow:0 7px 18px rgba(82,25,222,.22);margin-top:10px}
+.below{text-align:center;color:#5f6e8d;font-size:12px;margin:16px 0 0}
+@media(max-width:620px){
+.auth-card{padding:25px 22px 22px;min-height:100vh;border-radius:0;border-left:0;border-right:0}
+.heading{font-size:28px}.logo{width:155px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<section class="auth-card">
+<div class="heart h1">♥</div><div class="heart h2">♥</div><div class="heart h3">♥</div><div class="heart h4">♥</div>
+
+<div class="brand">
+<img class="logo" src="data:image/png;base64,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" alt="MilteHain logo">
+<h1 class="heading">Create Your Account</h1>
+<p class="subheading">Step into a world of meaningful connections</p>
+</div>
+
+<div class="tabs">
+<button class="tab active" type="button">Register</button>
+<button class="tab" type="button" onclick="location.href='login.html'">Login</button>
+</div>
+
+<form class="form" id="registerForm">
+<div class="field">
+<span class="icon">♙</span><label for="name">Full Name</label>
+<input id="name" name="name" type="text" placeholder="Enter your full name" required>
+</div>
+
+<div class="field">
+<span class="icon">✉</span><label for="email">Email Address</label>
+<input id="email" name="email" type="email" placeholder="Enter your email address" required>
+</div>
+
+
+<div class="field">
+<span class="icon">♙</span><label for="password">Password</label>
+<input id="password" name="password" type="password" placeholder="Create a strong password" minlength="8" required>
+<span class="password-eye">◉</span>
+</div>
+
+<div class="section-label">Gender</div>
+<div class="gender">
+<label><input type="radio" name="gender" value="Male" required><span>Male</span></label>
+<label><input type="radio" name="gender" value="Female"><span>Female</span></label>
+</div>
+
+<div class="section-label">Date of Birth</div>
+<div class="dob">
+<select class="select" name="dob_day" required>
+<option value="">DD</option>
+<option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
+</select>
+
+<select class="select" name="dob_month" required>
+<option value="">MM</option>
+<option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option>
+</select>
+
+<select class="select" name="dob_year" required>
+<option value="">YYYY</option>
+<option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option><option>1999</option><option>1998</option><option>1997</option><option>1996</option><option>1995</option><option>1994</option><option>1993</option><option>1992</option><option>1991</option><option>1990</option><option>1989</option><option>1988</option><option>1987</option><option>1986</option><option>1985</option><option>1984</option><option>1983</option><option>1982</option><option>1981</option><option>1980</option><option>1979</option><option>1978</option><option>1977</option><option>1976</option><option>1975</option><option>1974</option><option>1973</option><option>1972</option><option>1971</option><option>1970</option><option>1969</option><option>1968</option><option>1967</option><option>1966</option><option>1965</option><option>1964</option><option>1963</option><option>1962</option><option>1961</option><option>1960</option><option>1959</option><option>1958</option><option>1957</option><option>1956</option><option>1955</option><option>1954</option><option>1953</option><option>1952</option><option>1951</option><option>1950</option><option>1949</option><option>1948</option><option>1947</option><option>1946</option><option>1945</option><option>1944</option><option>1943</option><option>1942</option><option>1941</option><option>1940</option>
+</select>
+</div>
+
+<div class="checks">
+<label class="check">
+<input type="checkbox" required>
+<span>I confirm that I am <strong>18 years or older</strong>.</span>
+</label>
+
+<label class="check">
+<input type="checkbox" required>
+<span>I agree to the <a href="#" onclick="return false">Terms &amp; Conditions</a> and <a href="#" onclick="return false">Privacy Policy</a>.</span>
+</label>
+</div>
+
+<button class="main-btn" type="submit">Create Account</button>
+
+<p class="below">Already have an account? <a href="login.html">Login</a></p>
+</form>
+</section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+const supabaseClient = supabase.createClient(
+  window.MILTEHAIN_SUPABASE_URL,
+  window.MILTEHAIN_SUPABASE_PUBLISHABLE_KEY
+);
+
+document.getElementById('registerForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  if (!this.checkValidity()) {
+    this.reportValidity();
+    return;
+  }
+
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const fullName = document.getElementById('name').value.trim();
+  const gender = document.querySelector('input[name="gender"]:checked')?.value || '';
+  const day = document.querySelector('select[name="dob_day"]').value;
+  const month = document.querySelector('select[name="dob_month"]').value;
+  const year = document.querySelector('select[name="dob_year"]').value;
+
+  const dob = year + '-' + month + '-' + day;
+
+  const { error } = await supabaseClient.auth.signUp({
+    email,
+    password,
+    options: {
+      emailRedirectTo: 'https://miltehain.github.io/MilteHain-website/',
+      data: {
+        full_name: fullName,
+        gender: gender,
+        date_of_birth: dob
+      }
+    }
+  });
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  alert('Account created. Please verify your email first. After verification, you can continue to Profile Setup.');
+});
+</script>
+</body>
+</html>
