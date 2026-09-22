@@ -58,6 +58,37 @@ box-shadow:0 10px 35px rgba(35,56,100,.12);padding:28px 44px 25px;
 }
 </style>
 </head>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+
+<script>
+const supabaseClient = supabase.createClient(
+  window.MILTEHAIN_SUPABASE_URL,
+  window.MILTEHAIN_SUPABASE_PUBLISHABLE_KEY
+);
+
+const registerForm = document.querySelector("form");
+
+registerForm.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const email = document.querySelector('input[type="email"]').value.trim();
+  const password = document.querySelector('input[type="password"]').value;
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  alert("Account created successfully. Please check your email to verify your account.");
+  window.location.href = "profile-setup.html";
+});
+</script>
 <body>
 <div class="page">
 <section class="auth-card">
